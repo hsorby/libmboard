@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+include("${CMAKE_CURRENT_LIST_DIR}/libmboard-targets.cmake")
+
+set(MBOARD_VERSION "@PROJECT_VERSION@")
+
+if(@ENABLE_PARALLEL@)
+    find_dependency(Threads)
+    find_dependency(MPI COMPONENTS C)
+endif()
+
+check_required_components(libmboard)
+

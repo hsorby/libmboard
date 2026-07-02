@@ -1,0 +1,20 @@
+#pragma once
+
+/* Header availability */
+#cmakedefine HAVE_LIMITS_H
+#cmakedefine HAVE_STDDEF_H
+#cmakedefine HAVE_UNISTD_H
+#cmakedefine HAVE_FLOAT_H
+
+/* Feature flags */
+#cmakedefine WANT_MEMLOG
+
+/* Install paths */
+#define MB_INSTALL_BINDIR "@CMAKE_INSTALL_PREFIX@/bin"
+#define MB_INSTALL_LIBDIR "@CMAKE_INSTALL_PREFIX@/lib"
+#define MB_INSTALL_INCLUDEDIR "@CMAKE_INSTALL_PREFIX@/include"
+
+/* Configure info */
+#define INFO_CONFIG_ARGS "@CONFIG_ARGS@"
+#define INFO_CONFIG_DATE "@CONFIG_DATE@"
+
