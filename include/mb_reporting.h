@@ -116,6 +116,8 @@ inline static void P_FUNCFAIL(const char *fmt, ...) {
     vfprintf(stderr, fmt, args);
     va_end(args);
     fprintf(stderr, "\n\n");
+#else
+    (void)fmt;  /* suppress unused warning */
 #endif
 }
 
@@ -129,6 +131,8 @@ inline static void P_WARNING(const char *fmt, ...) {
     vfprintf(stderr, fmt, args);
     va_end(args);
     fprintf(stderr, "\n\n");
+#else
+    (void)fmt;  /* suppress unused warning */
 #endif
 }
 
@@ -142,6 +146,8 @@ inline static void P_INFO(const char *fmt, ...) {
     vprintf(fmt, args);
     va_end(args);
     printf("\n");
+#else
+    (void)fmt;  /* suppress unused warning */
 #endif
 }
 
