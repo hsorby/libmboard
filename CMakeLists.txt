@@ -7,7 +7,7 @@ project(libmboard VERSION 0.3.1 LANGUAGES C)
 # ----------------------------------------
 option(ENABLE_MEMLOG "Enable instrumentation of memory usage" OFF)
 option(ENABLE_UNSAFE_CHECKS "Enable unsafe developer checks" OFF)
-option(ENABLE_VERBOSE "Enable verbose debug output" OFF)
+option(ENABLE_VERBOSE "Enable verbose output" OFF)
 option(ENABLE_WARNINGS "Enable warning printing in debug" OFF)
 option(ENABLE_PARALLEL "Enable parallel build" ON)
 option(ENABLE_TESTS "Enable unit tests" OFF)
@@ -38,15 +38,16 @@ if(ENABLE_MEMLOG)
 endif()
 
 if(ENABLE_UNSAFE_CHECKS)
-    string(APPEND DEBUG_CFLAGS " -D_UNSAFE_CHECKS")
+    list(APPEND DEBUG_CFLAGS -D_UNSAFE_CHECKS)
 endif()
 
 if(ENABLE_VERBOSE)
-    string(APPEND DEBUG_CFLAGS " -D_EXTRA_INFO")
+    list(APPEND DEBUG_CFLAGS -D_EXTRA_INFO)
+    list(APPEND PRODUCTION_CFLAGS -D_EXTRA_INFO)
 endif()
 
 if(ENABLE_WARNINGS OR ENABLE_VERBOSE)
-    string(APPEND DEBUG_CFLAGS " -D_PRINT_WARNINGS")
+    list(APPEND DEBUG_CFLAGS -D_PRINT_WARNINGS)
 endif()
 
 # ----------------------------------------
@@ -220,13 +221,14 @@ configure_package_config_file(
 )
 
 # ----------------------------------------
-# Summary (like configure output)
+# Configuration Summary Report
 # ----------------------------------------
 message(STATUS "----------------------------------------")
 message(STATUS "libmboard ${PROJECT_VERSION}")
 message(STATUS "Compiler: ${CMAKE_C_COMPILER}")
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "Parallel enabled: ${ENABLE_PARALLEL}")
+message(STATUS "Verbose enabled: ${ENABLE_VERBOSE}")
 message(STATUS "Tests enabled: ${ENABLE_TESTS}")
 message(STATUS "Memlog enabled: ${ENABLE_MEMLOG}")
 message(STATUS "----------------------------------------")

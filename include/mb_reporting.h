@@ -42,13 +42,17 @@
 #define funcname "(unknown)"
 #endif
 
+#if defined(_PRINT_WARNINGS) || defined(_EXTRA_INFO)
+extern int MBI_CommRank;
+#endif
+
 /* -------------------------------------------------------------------- */
 /* if possible, use ISO C version of variadic macros */
 #if defined(HAVE_C99_VARIADIC_MACROS)
 
 #ifdef _EXTRA_INFO
 #define P_INFO(...) \
-    printf("[libmboard] INFO (P%d): ", MBI_CommRank);                                             \
+    printf("[libmboard] INFO (P%d): ", MBI_CommRank);                         \
     printf(__VA_ARGS__);                                                      \
     printf("\n");
 #else
