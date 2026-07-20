@@ -156,7 +156,6 @@ static void *commthread_main(void *params) {
                 /* unlock Sync Request Queue */
                 rc = pthread_mutex_unlock(&MBI_SRQLock); 
                 assert(0 == rc);
-                
                 break; /* breaking out of loop ends thread */
             }
             else
@@ -277,7 +276,7 @@ inline static void processPendingComms(void) {
                 assert(board->syncCompleted == MB_TRUE);
                 /* dequeue comm node */
                 MBI_CommQueue_Pop(node);
-                
+
                 /* send signal to wake main thread waiting on this board */
                 rc = pthread_cond_signal(&(board->syncCond));
                 assert(0 == rc);

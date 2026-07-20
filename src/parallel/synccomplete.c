@@ -49,7 +49,7 @@ int MB_SyncComplete(MBt_Board mb) {
     rc = pthread_mutex_lock(&(board->syncLock));
     assert(0 == rc);
     if (rc != 0) return MB_ERR_INTERNAL;
-    
+
     /* if sync not complete, wait till it is */
     while(board->syncCompleted != MB_TRUE)
     {

@@ -33,7 +33,6 @@ if ( MB_SyncStart(myboard) != MB_SUCCESS )
 MB_SyncTest(myboard, &flag);
 if (flag == MB_TRUE) 
 {
-    printf("synchronisation has completed\n");
     
     /* a successful call to MB_SyncTest would already complete
      * the communication and unlock the board. MB_SyncComplete()
@@ -43,7 +42,6 @@ if (flag == MB_TRUE)
 }
 else
 {
-    printf("synchronisation still in progress\n");
     
     do_something_else_first();
     

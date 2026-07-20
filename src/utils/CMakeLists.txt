@@ -104,7 +104,7 @@ if(ENABLE_PARALLEL)
     )
 
     target_compile_definitions(mb_utils_parallel
-        PUBLIC PACKAGE_VERSION="${PROJECT_VERSION}"
+        PUBLIC PACKAGE_VERSION="${PROJECT_VERSION}" _PARALLEL
     )
 endif()
 

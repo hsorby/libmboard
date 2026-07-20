@@ -57,6 +57,7 @@ void MBI_update_settings(void) {
                                                     10,     /* minimum */
                                                     1000000,  /* maximum */
                                                     512);   /* default */
+
 #ifdef _PARALLEL
     /* communication protocol to use */
     MBI_CONFIG.comm_protocol = _read_env_protocol("MBOARD_COMM_PROTOCOL");
